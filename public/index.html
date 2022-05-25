@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TodoApp</title>
+    <link rel="stylesheet" href="./css/todo.css">
+    <script src="./js/jquery.js"></script>
+    <script src="./js/template-web.js"></script>
+</head>
+
+<body>
+
+    <section class="todoapp">
+        <header class="header">
+            <h1>todos</h1>
+            <input type="text" class="new-todo" placeholder="What needs to be done?" autofocus id="task">
+        </header>
+
+        <section class="main">
+            <ul class="to-list" id="to-list">
+
+            </ul>
+        </section>
+        <footer class="footer">
+            <span class="todo-count"><strong id="item">0</strong>item left</span>
+            <ul class="filters">
+                <li><a href="javascript:;" id="all" class="selected">All</a></li>
+                <li><a href="javascript:;" id="active">Active</a></li>
+                <li><a href="javascript:;" id="completed">Completed</a></li>
+            </ul>
+            <button class="clear-completed " id="clear"> Clear Completed</button>
+        </footer>
+    </section>
+
+    <!-- 任务列表模板 -->
+    <script type="text/html" id="tasktpl">
+    <!-- //循环数据 -->
+    {{each tasks}}
+    <li class={{$value.completed ? 'completed' :''}}>
+        <div class="view" id="view">
+            <input type="checkbox" class="toggle" {{$value.completed ? 'checked' :''}}>
+            <label>{{$value.title}}</label>
+            <button class="destory" data-id={{$value._id}} id="destory">X</button>
+        </div>
+        <input type="text" class="edit">
+    </li>
+    {{/each}}
+    </script>
+    <script src="./js/todo.js"></script>
+
+</body>
+
+</html>
